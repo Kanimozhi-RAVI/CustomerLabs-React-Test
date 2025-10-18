@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import SegmentModal from "./Components/SegmentModal";
+import "./App.css";
+import { SlArrowLeft } from "react-icons/sl";
+
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="app-header">
+        <span className="back-arrow" style={{marginLeft:'20px'}}><SlArrowLeft/></span>
+        <span className="header-title">View Audience</span>
+      </div>
+
+      <div className="center-box">
+        <button className="open-btn" onClick={() => setShowModal(true)}>
+          Save segment
+        </button>
+      </div>
+
+      {showModal && <SegmentModal onClose={() => setShowModal(false)} />}
     </div>
   );
 }
